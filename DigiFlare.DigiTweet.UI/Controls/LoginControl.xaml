@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="DigiFlare.DigiTweet.UI.LoginControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Grid x:Name="LayoutRoot">
+        <Rectangle Stroke="#FF595959" RadiusX="0" RadiusY="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" x:Name="Background" Fill="{DynamicResource DigiTweetBackground2}"/>
+        <Grid VerticalAlignment="Center" Height="400" HorizontalAlignment="Center" Width="300">
+
+        	<TextBlock Foreground="#FFFFFFFF" Margin="0,40,10,0" FontFamily="Arial Rounded MT" FontSize="36" Text="digiTweet" TextWrapping="Wrap" x:Name="Title" VerticalAlignment="Top" Height="44" HorizontalAlignment="Center" Width="174.063" d:LayoutOverrides="Height"/>
+        	<TextBlock HorizontalAlignment="Left" Margin="58,25,0,0" VerticalAlignment="Top" Width="67" Height="20" Background="{x:Null}" Foreground="#FFFFFFFF" TextWrapping="Wrap"><Run Language="en-ca" Text="Welcome to "/></TextBlock>
+        	<TextBox x:Name="tbUsername" TabIndex="0" Margin="57,124,0,0" Text="" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="175.063" />
+        	<PasswordBox x:Name="tbPassword" TabIndex="1" Margin="58,182.96,0,0" VerticalAlignment="Top" Height="23" PasswordChar="*" HorizontalAlignment="Left" Width="174.063" />
+        	<TextBlock Margin="58,107,0,0" TextWrapping="Wrap" Foreground="#FFFFFFFF" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="102.063"><Run Language="en-ca" Text="Twitter Username:"/></TextBlock>
+        	<TextBlock Margin="58,166,0,0" Foreground="#FFFFFFFF" TextWrapping="Wrap" Text="Twitter Password:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="102.063" Height="15.96"/>
+            <CheckBox x:Name="cbRememberMe" Margin="57,219.96,0,0" TabIndex="2" VerticalAlignment="Top" Height="15" Content="Remember Me" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Width="102.063" />
+        	<Button x:Name="btnLogin" Click="btnLogin_Click" TabIndex="3" Margin="58,253.96,0,0" VerticalAlignment="Top" Height="25" Content="Sign In" HorizontalAlignment="Left" Width="174.063" IsDefault="True" />
+        	<TextBlock x:Name="txtError" Foreground="Red" Text="Login failed. Please check your username and password." Visibility="Hidden" Margin="0,205,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        	<TextBlock x:Name="txtLoading" FontFamily="Arial Rounded MT" FontSize="24" Foreground="White" Height="34" Text="Loading..." TextWrapping="Wrap" VerticalAlignment="Bottom" Visibility="Hidden" HorizontalAlignment="Center" Margin="0,0,5,25"/>
+        	<Image VerticalAlignment="Top" Height="58" Source="..\Images\Logo.png" Stretch="Fill" Margin="149,7,83.14,0"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,40 @@
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\bin\Release\ColorPicker.dll
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ResolveAssemblyReference.cache
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.g.cs
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\GeneratedInternalTypeHelper.g.cs
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.cache
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.lref
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.baml
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\Themes\generic.baml
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.g.resources
+E:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.dll
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\bin\Release\ColorPicker.dll
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ResolveAssemblyReference.cache
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.g.cs
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\GeneratedInternalTypeHelper.g.cs
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.cache
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.lref
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.baml
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\Themes\generic.baml
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.g.resources
+G:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.dll
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\bin\Release\ColorPicker.dll
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ResolveAssemblyReference.cache
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.g.cs
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\GeneratedInternalTypeHelper.g.cs
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.cache
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.lref
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.baml
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\Themes\generic.baml
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.g.resources
+Q:\Dev\External projects\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.dll
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\bin\Release\ColorPicker.dll
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.g.cs
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.cache
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.lref
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPickerDialog.baml
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\Themes\generic.baml
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.g.resources
+C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.dll

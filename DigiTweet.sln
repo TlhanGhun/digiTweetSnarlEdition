@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigiFlare.DigiTweet.DataAccess", "DigiFlare.DigiTweet.DataAccess\DigiFlare.DigiTweet.DataAccess.csproj", "{6BE7D128-74D9-49E8-8FE0-EABE34BA0BDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigiFlare.DigiTweet.UI", "DigiFlare.DigiTweet.UI\DigiFlare.DigiTweet.UI.csproj", "{DCAB4DC9-415A-43B4-9CAB-1922606C69EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigiFlare.DigiTweet", "DigiFlare.DigiTweet.Logic\DigiFlare.DigiTweet.csproj", "{22F2C6AE-68F2-4EF6-9544-5E6003B144F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "colorpicker", "colorpickerlib\colorpicker.csproj", "{99E90579-62FC-4898-B168-24F7DBD3A34D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BE7D128-74D9-49E8-8FE0-EABE34BA0BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE7D128-74D9-49E8-8FE0-EABE34BA0BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE7D128-74D9-49E8-8FE0-EABE34BA0BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE7D128-74D9-49E8-8FE0-EABE34BA0BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCAB4DC9-415A-43B4-9CAB-1922606C69EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCAB4DC9-415A-43B4-9CAB-1922606C69EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCAB4DC9-415A-43B4-9CAB-1922606C69EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCAB4DC9-415A-43B4-9CAB-1922606C69EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F2C6AE-68F2-4EF6-9544-5E6003B144F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F2C6AE-68F2-4EF6-9544-5E6003B144F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F2C6AE-68F2-4EF6-9544-5E6003B144F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F2C6AE-68F2-4EF6-9544-5E6003B144F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99E90579-62FC-4898-B168-24F7DBD3A34D}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{99E90579-62FC-4898-B168-24F7DBD3A34D}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{99E90579-62FC-4898-B168-24F7DBD3A34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99E90579-62FC-4898-B168-24F7DBD3A34D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DigiTweet.vsmdi
+	EndGlobalSection
+EndGlobal

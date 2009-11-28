@@ -1,0 +1,623 @@
+﻿<Window x:Class="DigiFlare.DigiTweet.UI.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        xmlns:blacklight="clr-namespace:Blacklight.Controls;assembly=Blacklight.WPFControls"
+        xmlns:converters="clr-namespace:DigiFlare.DigiTweet.UI.Converters"
+        xmlns:local="clr-namespace:DigiFlare.DigiTweet.UI"
+        xmlns:cc="clr-namespace:Microsoft.Samples.CustomControls;assembly=ColorPicker"
+        Width="1024" Height="768"
+        MinWidth="600" MinHeight="400"
+        Title="digiTweet"
+        Closed="window_Closed"
+        StateChanged="window_StateChanged">
+    <Window.Resources>
+        <converters:DeleteTweetConverter x:Key="DeleteTweetButtonEnabled" />
+        <converters:TweetLengthConverter x:Key="TweetLength" />
+        <converters:StatusDetailsConverter x:Key="TweetDetails" />
+        <converters:FollowButtonContentConverter x:Key="FollowButtonContent" />
+        <converters:TweetColorConverter x:Key="TweetColor" />
+    </Window.Resources>
+    <Grid>
+        <Grid x:Name="LoginView" d:IsHidden="True">
+            <local:LoginControl x:Name="ucLogin" />
+        </Grid>
+        <Grid x:Name="MainView" Visibility="Hidden">
+            <Rectangle x:Name="Background" 
+                       Stroke="{x:Null}" 
+                       RadiusX="0" RadiusY="0"
+                       Margin="0,0,0,0"
+                       HorizontalAlignment="Stretch" 
+                       VerticalAlignment="Stretch"
+                       Width="Auto" Height="Auto" Fill="{DynamicResource DigiTweetBackground2}" d:IsLocked="True"/>
+            <DockPanel Margin="0,0,0,0" x:Name="MainPane" VerticalAlignment="Stretch" LastChildFill="True">
+                <Grid x:Name="HeaderPane" 
+    		            Height="50" DockPanel.Dock="Top" Margin="0,0,0,10">
+                    <Rectangle Stroke="{DynamicResource GrayBorder}" Fill="{DynamicResource HeaderBackground}" x:Name="HeaderBackg"/>
+                    <Rectangle Fill="{DynamicResource HeaderBackgroundTop}" 
+    			            Stroke="{x:Null}" 
+    			            VerticalAlignment="Top" 
+    			            Height="26" 
+    			            Opacity="0.1" x:Name="HeaderBackgShd" d:LayoutOverrides="VerticalAlignment" />
+                    <Image HorizontalAlignment="Left" Margin="72,2,0,16" Width="37.44" Source="Images\Logo.png" Stretch="Fill"/>
+                    <TextBlock x:Name="Title" 
+    			            Foreground="#FFFFFFFF" 
+    			            HorizontalAlignment="Left" 
+    			            Margin="14,19,0,0" 
+    			            Width="123" 
+    			            FontFamily="Arial Rounded MT" 
+    			            FontSize="22" 
+    			            Text="digiTweet" 
+    			            TextWrapping="Wrap" d:LayoutOverrides="VerticalAlignment" />
+                    <TextBlock x:Name="txtLoading"
+    			            Foreground="White"
+    			            FontSize="14"
+                            FontFamily="Arial Rounded MT" 
+    			            Text="Working..." 
+    			            Visibility="Hidden"
+    			            HorizontalAlignment="Left"
+    			            Margin="186,22,0,6"
+    			            Width="106.122" />
+                    <TextBlock HorizontalAlignment="Left" FontFamily="Arial" Margin="124,0,0,4" VerticalAlignment="Bottom" Width="68" Height="12" TextWrapping="Wrap" FontSize="9"><Run Foreground="#FFFFFFFF" Text="Snarl Edition"/></TextBlock>
+                    <Button x:Name="Home" 
+                            Content="Home"
+                            Click="btnHome_Click"
+                            Width="48"
+                            HorizontalAlignment="Right" 
+                            Margin="0,8,409,8" 
+                            Foreground="#FFFFFFFF" Style="{DynamicResource Home}" Cursor="Hand" ToolTip="Home" />
+                    <Button x:Name="Tweet"
+                            Content="Tweet"
+                            Click="btnTweet_Click"
+                            Width="48"  
+                            Foreground="#FFFFFFFF"
+                            HorizontalAlignment="Right" 
+                            Margin="0,8,360,8" Style="{DynamicResource Tweet}" d:LayoutOverrides="HorizontalAlignment" Cursor="Hand" ToolTip="Tweet" />
+                    <Button Margin="0,8,310,8" x:Name="Tweets" Click="btnTweets_Click"  Content="Tweets" Foreground="#FFFFFFFF" HorizontalAlignment="Right" Width="48" Style="{DynamicResource Tweets}" Cursor="Hand" ToolTip="All Tweets" />
+                    <Button Margin="0,8,260,8" x:Name="Reply" Click="btnReplies_Click" Content="Reply" Foreground="#FFFFFFFF" Width="46" HorizontalAlignment="Right" Style="{DynamicResource Reply}" Cursor="Hand" ToolTip="Replies" />
+                    <Button Margin="0,8,210,8" x:Name="DM" Click="btnDirectMessages_Click" Content="DM" Foreground="#FFFFFFFF" HorizontalAlignment="Right" Width="46" Style="{DynamicResource DirectMessage}" Cursor="Hand" ToolTip="Direct Message" />
+                    <Button Margin="0,8,160,8" x:Name="Profile" Click="btnProfile_Click" Content="Profile" Foreground="#FFFFFFFF" HorizontalAlignment="Right" Width="48" Style="{DynamicResource Profile}" Cursor="Hand" ToolTip="Profile" />
+                    <Button x:Name="btnRefresh"
+    				            Content="Refresh"
+    				            Margin="0,8,110,8"
+    				            Click="btnRefresh_Click" Foreground="#FFFFFFFF"  Width="46" Style="{DynamicResource Refersh}" Cursor="Hand" ToolTip="Refresh" HorizontalAlignment="Right" />
+                    <Button x:Name="Options" Content="Options" Width="48" Foreground="White" Click="btnOptions_Click" Margin="0,8,60,8" Style="{DynamicResource Options}" HorizontalAlignment="Right" Cursor="Hand" ToolTip="Options"/>
+                    <Button Margin="0,8,10,8" x:Name="Logout" Click="btnLogout_Click" Content="Logout" Foreground="#FFFFFFFF" HorizontalAlignment="Right" Width="46" Style="{DynamicResource Logout}" Cursor="Hand" ToolTip="Logout" />
+                </Grid>
+                <Grid x:Name="SliderPane" Height="100" DockPanel.Dock="Top" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Border Margin="5,0,5,0" Grid.ColumnSpan="3" Grid.RowSpan="2" Background="#FF2B2B2B" CornerRadius="10,10,10,10"/>
+                    <Grid Margin="8,8,6.543,8" x:Name="SlideLeftGrid" Grid.RowSpan="2">
+                        <TextBlock
+    				            Width="Auto"
+    				            VerticalAlignment="Top"
+    				            Foreground="WhiteSmoke" d:LayoutOverrides="Width" Height="38.093" Margin="5,1,0,0" FontSize="14" ><Run Text="What are you "/><LineBreak/><Run Text="doing?"/></TextBlock>
+                        <TextBlock HorizontalAlignment="Right"
+    				            Foreground="WhiteSmoke" Width="22.023" Text="{Binding Path=Text, Converter={StaticResource TweetLength}, ElementName=txtTweet}" Margin="0,39.093,0,23.96"/>
+                        <TextBlock
+    				            Width="Auto"
+    				            Text="URL"
+    				            HorizontalAlignment="Right"
+    				            VerticalAlignment="Bottom"
+    				            Foreground="WhiteSmoke" Margin="0,0,0,2" />
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.RowSpan="2">
+                        <TextBox x:Name="txtTweet"
+                                 KeyDown="txtTweet_KeyDown"
+                                 MaxLength="140" Text="" Margin="0,8,0,37"
+                                 Style="{DynamicResource GenericTextbox}"/>
+                        <StackPanel Margin="0,0,0,5" VerticalAlignment="Bottom" Width="Auto" Height="30" Orientation="Horizontal">
+                            <TextBox x:Name="txtUrl" Text="" 
+                                     Width="419.466666666667" Height="25" Margin="0,0,30,0"
+                                     Style="{DynamicResource GenericTextbox}" />
+                            <Button x:Name="btnTinyUrl"
+    					            Content="TinyUrl"
+    					            Click="btnTinyUrl_Click" Width="50" Height="25" d:LayoutOverrides="Width" Foreground="#FFFFFFFF" Style="{DynamicResource GenericButton}" Cursor="Hand"  />
+                            <Button x:Name="btnTwitPic"
+    					            Content="TwitPic"
+    					            Click="btnTwitPic_Click" Width="50" Height="25" Margin="8,0,0,0" Foreground="#FFFFFFFF" Style="{DynamicResource GenericButton}" Cursor="Hand"  />
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Grid.RowSpan="2" Grid.Column="2" Width="Auto" Height="Auto" VerticalAlignment="Center" Margin="5,5,10,5">
+                        <Button x:Name="btnSend"
+    				            Content="Send"
+    				            Margin="5,5,5,5"
+    				            Click="btnSend_Click" Foreground="#FFFFFFFF"  Width="50" Height="50" Style="{DynamicResource GenericButton}" Cursor="Hand"/>
+                        <Button x:Name="btnCloseSlider" 
+                                    Click="btnCloseSlider_Click"
+                                    Width="20" Height="20" 
+                                    Content="X" 
+                                    HorizontalAlignment="Right" 
+                                    Margin="0,10,0,0" 
+                                    Foreground="#FFFFFFFF" Style="{DynamicResource GenericButton}" Cursor="Hand" ToolTip="Close"  />
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="ContentPane" Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <!-- drag dock panel host -->
+                    <blacklight:DragDockPanelHost x:Name="ddphMain"
+                                                  Grid.Row="0"
+                                                  MaxColumns="4"
+                                                  MinimizedPosition="Right">
+                        <!-- all tweets panel-->
+                        <blacklight:DragDockPanel x:Name="ddpAllTweets"
+    				            Header="All Tweets"
+    				            PanelIndex="0"
+    				            PanelState="Restored"
+    				            Margin="10" Style="{DynamicResource TweetDragDockPanelStyle}">
+                            <Grid>
+                                <TextBlock x:Name="txtTweetsLoading"
+                                           Grid.Row="0" 
+                                           Foreground="White"
+                                           Text="Loading Tweets"
+                                           FontSize="16" 
+                                           HorizontalAlignment="Center"
+                                           Margin="10" />
+                                <local:TweetsPanelControl x:Name="icAllTweets" 
+                                                          IsShowMoreButton="Collapsed"
+                                                          AvatarClicked="imgAvatar_MouseDown"
+                                                          TweetTextLoaded="TextBlock_Loaded"
+                                                          ReplyClicked ="btnReply_Click"
+                                                          DirectMessageClicked ="btnDirectMessage_Click"
+                                                          RetweetClicked ="btnRetweet_Click"
+                                                          DeleteClicked ="btnDelete_Click"
+                                                          MoreClicked ="btnMoreTweets_Click"
+                                                          FavouriteClicked="cbFavourite_Click" />
+                            </Grid>
+                        </blacklight:DragDockPanel>
+
+                        <!-- replies panel -->
+                        <blacklight:DragDockPanel x:Name="ddpReplies"
+    				            Header="Replies"
+    				            PanelIndex="1"
+    				            PanelState="Restored"
+    				            Margin="10">
+                            <Grid>
+                                <TextBlock x:Name="txtRepliesLoading"
+                                           Grid.Row="0" 
+                                           Foreground="White"
+                                           Text="Loading Replies"
+                                           FontSize="16" 
+                                           HorizontalAlignment="Center"
+                                           Margin="10" />
+                                <local:TweetsPanelControl x:Name="icAllReplies" 
+                                                          IsShowMoreButton="Collapsed"
+                                                          AvatarClicked="imgAvatar_MouseDown"
+                                                          TweetTextLoaded="TextBlock_Loaded"
+                                                          ReplyClicked ="btnReply_Click"
+                                                          DirectMessageClicked ="btnDirectMessage_Click"
+                                                          RetweetClicked ="btnRetweet_Click"
+                                                          DeleteClicked ="btnDelete_Click"
+                                                          MoreClicked ="btnMoreTweets_Click"
+                                                          FavouriteClicked="cbFavourite_Click" />
+                            </Grid>
+                        </blacklight:DragDockPanel>
+
+                        <!-- direct messages panel -->
+                        <blacklight:DragDockPanel x:Name="ddpDirectMessages"
+    				            Header="Direct Messages"
+    				            PanelIndex="2"
+    				            PanelState="Restored"
+    				            Margin="10">
+                            <Grid>
+                                <TextBlock x:Name="txtDirectMessagesLoading"
+                                           Grid.Row="0" 
+                                           Foreground="White"
+                                           Text="Loading Direct Messages"
+                                           FontSize="16" 
+                                           HorizontalAlignment="Center"
+                                           Margin="10" />
+                                <ItemsControl x:Name="icDirectMessages">
+                                    <ItemsControl.Template>
+                                        <ControlTemplate>
+                                            <ScrollViewer>
+                                                <ItemsPresenter />
+                                            </ScrollViewer>
+                                        </ControlTemplate>
+                                    </ItemsControl.Template>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Vertical" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Height="50" Margin="5,10,5,0"
+                                                    Style="{DynamicResource ItemBorder}">
+                                                <Border.BorderBrush>
+                                                    <Binding Converter="{StaticResource TweetColor}" />
+                                                </Border.BorderBrush>
+                                                <Border.Triggers>
+                                                    <EventTrigger RoutedEvent="Border.MouseEnter" >
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="DirectMessageOptions"
+                                                                             BeginTime="0:0:0.4"
+                                                                             To="1" Duration="0:0:0.5" 
+                                                                             AccelerationRatio="0.10" DecelerationRatio="0.25" 
+                                                                             Storyboard.TargetProperty="(Grid.Opacity)" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+                                                    <EventTrigger RoutedEvent="Border.MouseLeave" >
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="DirectMessageOptions"
+                                                                             To="0" Duration="0:0:0.5" 
+                                                                             AccelerationRatio="0.10" DecelerationRatio="0.25" 
+                                                                             Storyboard.TargetProperty="(Grid.Opacity)" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </EventTrigger>
+                                                </Border.Triggers>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="50" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image Grid.Column="0"
+    										            Source="{Binding Path=Sender.ProfileImageUrl}"
+    										            Margin="5,5,5,5"
+                                                        Cursor="Hand"
+    										            MouseDown="imgAvatar_MouseDown" />
+                                                    <TextBlock Grid.Column="1" 
+                                                        Text="{Binding Text}"
+    										            Margin="0,0,0,0"
+    										            FontSize="12"
+    										            Foreground="White"
+    										            TextWrapping="Wrap"
+    										            Loaded="TextBlock_Loaded" />
+                                                    <Grid Grid.Column="2" Height="25" VerticalAlignment="Center" x:Name="DirectMessageOptions" Opacity="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="25" />
+                                                            <ColumnDefinition Width="25" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Button Grid.Column="0"
+    											            Click="btnDirectMessage_Click"
+    											            Foreground="#FFFFFFFF" Style="{DynamicResource DirectMessage}" Cursor="Hand" ToolTip="Direct Message"/>
+                                                        <Button Grid.Column="1"
+    											            Click="btnDelete_Click" 
+    											            Foreground="#FFFFFFFF" Style="{DynamicResource Trash}"  Cursor="Hand" ToolTip="Delete"/>
+                                                    </Grid>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Grid>
+                        </blacklight:DragDockPanel>
+
+                        <!-- Profile Panel -->
+                        <blacklight:DragDockPanel x:Name="ddpProfile"
+    				            Header="Profile"
+    				            PanelIndex="3"
+    				            PanelState="Restored"
+    				            Margin="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <!-- user avatar -->
+                                <Image Grid.Row="0" Grid.Column="0"
+							           Width="50" Height="50"
+							           VerticalAlignment="Top"
+							           Margin="5"
+                                       ToolTip="Right click to add user to a category"
+                                       ContextMenuOpening="ProfileAvatar_ContextMenuOpening"
+							           Source="{Binding Path=SelectedUser.ProfileImageUrl}" />
+                                <!-- follow user button -->
+                                <Button Grid.Row="1" 
+                                        x:Name="btnFollow" 
+                                        Click="btnFollow_Click"
+                                        Width="50" Height="25"
+                                        Foreground="White" Margin="5"
+                                        VerticalAlignment="Top" 
+                                        Style="{DynamicResource GenericButton}"
+                                        Content="{Binding Path=SelectedUser.Following, Converter={StaticResource FollowButtonContent}}"/>
+                                <!-- user description -->
+                                <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
+                                           Width="Auto" Height="Auto"
+                                           Foreground="WhiteSmoke" 
+                                           TextWrapping="Wrap"
+                                           Text="{Binding Path=SelectedUser.Description}" />
+                                <!-- user details -->
+                                <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Row="0" Grid.Column="0"
+								            Foreground="WhiteSmoke"
+								            HorizontalAlignment="Right"
+								            Margin="5,0,5,0"
+								            Text="Name: " />
+                                    <TextBlock Grid.Row="0" Grid.Column="1"
+								            Foreground="WhiteSmoke" 
+								            Text="{Binding Path=SelectedUser.Name}" />
+                                    <TextBlock Grid.Row="1" Grid.Column="0"
+								            Foreground="WhiteSmoke"
+								            HorizontalAlignment="Right"
+								            Margin="5,0,5,0"
+								            Text="Location: " />
+                                    <TextBlock Grid.Row="1" Grid.Column="1"
+								            Foreground="WhiteSmoke" 
+								            Text="{Binding Path=SelectedUser.Location}" />
+                                    <TextBlock Grid.Row="2" Grid.Column="0"
+								            Foreground="WhiteSmoke"
+								            HorizontalAlignment="Right"
+								            Margin="5,0,5,0"
+								            Text="Url: " />
+                                    <TextBlock x:Name="txtUserProfileUrl"
+                                               Grid.Row="2" Grid.Column="1"
+								               Foreground="WhiteSmoke">
+                                    </TextBlock>
+                                    <TextBlock Grid.Row="3" Grid.Column="0"
+								            Foreground="WhiteSmoke" 
+								            HorizontalAlignment="Right"
+								            Margin="5,0,5,0"
+								            Text="Following: " />
+                                    <TextBlock Grid.Row="3" Grid.Column="1"
+								            Foreground="WhiteSmoke" 
+								            Text="{Binding Path=SelectedUser.FriendsCount}" />
+                                    <TextBlock Grid.Row="4" Grid.Column="0"
+								            Foreground="WhiteSmoke" 
+								            HorizontalAlignment="Right"
+								            Margin="5,0,5,0"
+								            Text="Followers: " />
+                                    <TextBlock Grid.Row="4" Grid.Column="1"
+								            Foreground="WhiteSmoke" 
+								            Text="{Binding Path=SelectedUser.FollowersCount}" />
+                                    <TextBlock Grid.Row="5" Grid.Column="0"
+								            Foreground="WhiteSmoke" 
+								            HorizontalAlignment="Right"
+								            Margin="5,0,5,0"
+								            Text="Updates: " />
+                                    <TextBlock Grid.Row="5" Grid.Column="1"
+								            Foreground="WhiteSmoke" 
+								            Text="{Binding Path=SelectedUser.StatusesCount}" />
+                                </Grid>
+                                
+                                <!-- user tweets -->
+                                <local:TweetsPanelControl Grid.Row="3" Grid.ColumnSpan="2"
+                                                          x:Name="icUserTweets"
+                                                          IsShowMoreButton="Collapsed"
+                                                          AvatarClicked="imgAvatar_MouseDown"
+                                                          TweetTextLoaded="TextBlock_Loaded"
+                                                          ReplyClicked ="btnReply_Click"
+                                                          DirectMessageClicked ="btnDirectMessage_Click"
+                                                          RetweetClicked ="btnRetweet_Click"
+                                                          DeleteClicked ="btnDelete_Click"
+                                                          MoreClicked ="btnMoreTweets_Click"
+                                                          FavouriteClicked="cbFavourite_Click" />
+                            </Grid>
+                        </blacklight:DragDockPanel>
+                        
+                        <!-- categories panel -->
+                        <blacklight:DragDockPanel x:Name="ddpCategories"
+    				            Header="Categories"
+    				            PanelIndex="4"
+    				            PanelState="Restored"
+    				            Margin="10">
+                            <TabControl x:Name="tcCategories" 
+                                        Style="{DynamicResource GenericTab}">
+                                <TabItem Style="{DynamicResource GenericTabItem}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <TextBlock Text="Friends" Foreground="White" />
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <Grid>
+                                        <TextBlock x:Name="txtFriendsLoading"
+                                                   Grid.Row="0" 
+                                                   Foreground="White"
+                                                   Text="Loading Friends"
+                                                   FontSize="16" 
+                                                   HorizontalAlignment="Center"
+                                                   Margin="10" />
+                                        <ItemsControl x:Name="icFriends">
+                                            <ItemsControl.Template>
+                                                <ControlTemplate>
+                                                    <ScrollViewer>
+                                                        <ItemsPresenter />
+                                                    </ScrollViewer>
+                                                </ControlTemplate>
+                                            </ItemsControl.Template>
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Border Width="100" Height="Auto"
+                                                    Margin="5,10,5,0" 
+                                                    HorizontalAlignment="Left"
+                                                    Style="{DynamicResource ItemBorder}">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Image Grid.Row="0"
+                                                           MouseDown="imgAvatar_MouseDown"
+                                                           Width="50" Height="50" Cursor="Hand"
+                                                           HorizontalAlignment="Center"
+                                                           Source="{Binding ProfileImageUrl}" />
+                                                            <TextBlock Grid.Row="1"
+                                                               HorizontalAlignment="Center"
+                                                               Foreground="White" Text="{Binding ScreenName}" />
+                                                        </Grid>
+                                                    </Border>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </Grid>
+                                </TabItem>
+                                <TabItem x:Name="tabFavourites"
+                                         Style="{DynamicResource GenericTabItem}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <TextBlock Text="Favourites" Foreground="White" />
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <Grid>
+                                        <local:TweetsPanelControl x:Name="icAllFavourites" 
+                                                                  IsShowMoreButton="Collapsed"
+                                                                  AvatarClicked="imgAvatar_MouseDown"
+                                                                  TweetTextLoaded="TextBlock_Loaded"
+                                                                  ReplyClicked ="btnReply_Click"
+                                                                  DirectMessageClicked ="btnDirectMessage_Click"
+                                                                  RetweetClicked ="btnRetweet_Click"
+                                                                  DeleteClicked ="btnDelete_Click"
+                                                                  MoreClicked ="btnMoreTweets_Click"
+                                                                  FavouriteClicked="cbFavourite_Click" />
+                                    </Grid>
+                                </TabItem>
+                                <TabItem x:Name="tabEdit" 
+                                         Style="{DynamicResource GenericTabItem}">
+                                    <TabItem.Header>
+                                        <Grid>
+                                            <TextBlock Text="+" Foreground="White" />
+                                        </Grid>
+                                    </TabItem.Header>
+                                    <ScrollViewer>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="35" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="35" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="2*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Row="0" Grid.Column="0" 
+                                                       Text="Name:" 
+                                                       Foreground="White" 
+                                                       FontSize="12" Margin="5"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Center" />
+                                            <TextBox Grid.Row="0" Grid.Column="1" 
+                                                     x:Name="txtCategoryName" 
+                                                     FontSize="12" Margin="5"
+                                                     Style="{DynamicResource GenericTextbox}" />
+                                            <TextBlock Grid.Row="1" Grid.Column="0" 
+                                                       Text="Users:" 
+                                                       Foreground="White" 
+                                                       FontSize="12" Margin="5" />
+                                            <ListBox Grid.Row="1" Grid.Column="1" 
+                                                     x:Name="lbFollowing" 
+                                                     SelectionMode="Multiple"
+                                                     FontSize="12" Margin="5" 
+                                                     Style="{DynamicResource CheckBoxList}">
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding ScreenName}" Foreground="White" />
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                            <TextBlock Grid.Row="2" Grid.Column="0" 
+                                                       Text="Color (Hex):" 
+                                                       Foreground="White" 
+                                                       FontSize="12" Margin="5"
+                                                       HorizontalAlignment="Left"
+                                                       VerticalAlignment="Top" />
+                                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical">
+                                                <TextBox Grid.Row="2" Grid.Column="1" 
+                                                     x:Name="txtCategoryColor" 
+                                                     FontSize="12" Margin="5"
+                                                     Style="{DynamicResource GenericTextbox}" />
+                                                <Button x:Name="btnColorPicker"
+                                                    Grid.Row="3" Grid.Column="0"
+                                                    Click="btnColorPicker_Click"
+                                                    Content="ColorPicker" Foreground="White"
+                                                    Width="75" Height="25" Margin="5"
+                                                    Style="{DynamicResource GenericButton}" />
+                                            </StackPanel>
+                                            <Button x:Name="btnSaveCategory"
+                                                    Grid.Row="3" Grid.Column="1" 
+                                                    Click="btnSaveCategory_Click"
+                                                    Content="Save" Foreground="White"
+                                                    Margin="5"
+                                                    Style="{DynamicResource GenericButton}" />
+                                        </Grid>
+                                    </ScrollViewer>
+                                </TabItem>
+                            </TabControl>
+                        </blacklight:DragDockPanel>
+
+                        <!-- search results panel -->
+                        <blacklight:DragDockPanel x:Name="ddpSearch"
+    				            Header="Search"
+    				            PanelIndex="5"
+    				            PanelState="Restored"
+    				            Margin="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox x:Name="tbSearch" KeyDown="tbSearch_KeyDown"
+                                         Grid.Row="0" Grid.Column="0"
+                                         Margin="2" Style="{DynamicResource GenericTextbox}" />
+                                <Button x:Name="btnSearch" Click="btnSearch_Click" 
+                                        Grid.Row="0" Grid.Column="1" 
+                                        Margin="2" Content="Search"
+                                        Foreground="#FFFFFFFF" Style="{DynamicResource GenericButton}" />
+                                <TabControl x:Name="tcSearches" 
+                                            Grid.Row="1" Grid.ColumnSpan="2"
+                                            Style="{DynamicResource GenericTab}">
+                                </TabControl>
+                            </Grid>
+                        </blacklight:DragDockPanel>
+                    </blacklight:DragDockPanelHost>
+                    
+                    <!-- last updated timestamp -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"  Background="Black">
+                        <TextBlock Foreground="White" Text="Last Updated: " FontSize="10" />
+                        <TextBlock Foreground="White" FontSize="10">
+                            <TextBlock.Text>
+                                <Binding RelativeSource="{RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}"
+                                         Path="LastUpdated" />
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </DockPanel>
+        </Grid>
+    </Grid>
+</Window>

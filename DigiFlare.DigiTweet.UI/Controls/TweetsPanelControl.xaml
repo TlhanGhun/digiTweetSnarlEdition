@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="DigiFlare.DigiTweet.UI.TweetsPanelControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:converters="clr-namespace:DigiFlare.DigiTweet.UI.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <converters:StatusDetailsConverter x:Key="TweetDetails" />
+        <converters:DeleteTweetConverter x:Key="DeleteTweetButtonEnabled" />
+        <converters:TweetColorConverter x:Key="TweetColor" />
+    </UserControl.Resources>
+    <ItemsControl x:Name="icTweets">
+        <ItemsControl.Template>
+            <ControlTemplate>
+                <ScrollViewer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ItemsPresenter Grid.Row="0" />
+                        <Button Grid.Row="1"
+                                Click="More_Click"
+                                Content="More Tweets..."
+                                HorizontalAlignment="Right"
+                                Margin="5" Width="100" Height="25" 
+                                Foreground="#FFFFFFFF" Cursor="Hand"
+                                Style="{DynamicResource GenericButton}">
+                            <Button.Visibility>
+                                <Binding RelativeSource="{RelativeSource AncestorType={x:Type UserControl}, Mode=FindAncestor}" 
+                                         Path="IsShowMoreButton" />
+                            </Button.Visibility>
+                        </Button>
+                    </Grid>
+                </ScrollViewer>
+            </ControlTemplate>
+        </ItemsControl.Template>
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Border Height="Auto" Margin="5,10,5,0"
+                        Style="{DynamicResource ItemBorder}">
+                    <Border.BorderBrush>
+                        <Binding Converter="{StaticResource TweetColor}" />
+                    </Border.BorderBrush>
+                    <Border.Triggers>
+                        <EventTrigger RoutedEvent="Border.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="TweetOptions"
+                                                     Storyboard.TargetProperty="(WrapPanel.Opacity)"
+                                                     BeginTime="0:0:0.4"
+                                                     To="1" Duration="0:0:0.5" 
+                                                     AccelerationRatio="0.10" DecelerationRatio="0.25" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Border.MouseLeave" >
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="TweetOptions"
+                                                     To="0" Duration="0:0:0.5" 
+                                                     AccelerationRatio="0.10" DecelerationRatio="0.25" 
+                                                     Storyboard.TargetProperty="(Grid.Opacity)" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Border.Triggers>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="25" />
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Grid.Row="0" Grid.RowSpan="2" Grid.Column="3"
+                                  IsChecked="{Binding Path=Favourited}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Click="Favourite_Click"
+                                  Style="{DynamicResource Favourite}" Cursor="Hand" ToolTip="Add to Favourite">
+                        </CheckBox>
+                        <Image Grid.Row="0" Grid.Column="0"
+			                   Source="{Binding Path=User.ProfileImageUrl}"
+			                   Margin="5,5,5,5"
+                               Cursor="Hand"
+			                   MouseDown="Avatar_MouseDown" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" 
+                                   Text="{Binding Text}"
+                                   Margin="0,0,0,0"
+				                   FontSize="12"
+				                   Foreground="White"
+				                   TextWrapping="Wrap"
+				                   Loaded="TweetText_Load" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                                   FontSize="10" Foreground="White" 
+                                   Text="{Binding Converter={StaticResource TweetDetails}}" />
+                        <WrapPanel Grid.Row="0" Grid.Column="2"
+                                   x:Name="TweetOptions" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Opacity="0">
+                            <Button Width="25" Height="25" 
+                                    Click="Reply_Click"
+				                    Foreground="#FFFFFFFF" 
+                                    Cursor="Hand" ToolTip="Reply"
+                                    Style="{DynamicResource Reply}" />
+                            <Button Width="25" Height="25" 
+                                    Click="DirectMessage_Click"
+                                    Cursor="Hand" ToolTip="Direct Message"
+					                Foreground="#FFFFFFFF" Style="{DynamicResource DirectMessage}" />
+                            <Button Width="25" Height="25" 
+                                    Click="Retweet_Click"
+                                    Cursor="Hand" ToolTip="Retweet"
+			                        Foreground="#FFFFFFFF" Style="{DynamicResource Retweet}" />
+                            <Button Width="25" Height="25" 
+                                    Click="Delete_Click"
+                                    Cursor="Hand" ToolTip="Delete"
+					                Foreground="#FFFFFFFF" Style="{DynamicResource Trash}">
+                                <Button.IsEnabled>
+                                    <MultiBinding Converter="{StaticResource DeleteTweetButtonEnabled}">
+                                        <Binding Path="User.Id" />
+                                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}" 
+    											 Path="LoggedInUser" />
+                                    </MultiBinding>
+                                </Button.IsEnabled>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

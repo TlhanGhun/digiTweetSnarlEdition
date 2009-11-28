@@ -1,0 +1,69 @@
+﻿<Window x:Class="DigiFlare.DigiTweet.UI.AlertWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Height="100" Width="225"
+        Background="Black"
+        BorderBrush="Black"
+        BorderThickness="1"
+        Opacity="0"
+        ShowInTaskbar="False">
+    <Window.Template>
+        <ControlTemplate>
+            <Border Background="{TemplateBinding Window.Background}"
+                    BorderBrush="{TemplateBinding Window.BorderBrush}"
+                    BorderThickness="{TemplateBinding Window.BorderThickness}"
+                    SnapsToDevicePixels="True">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Background="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="5,0,0,0" FontWeight="Bold" FontSize="12" 
+                                       Foreground="White" Opacity="1.0" Text="digiTweet Notification"/>
+                            <Button x:Name="btnClose" 
+                                    Grid.Column="1"
+                                    Click="btnClose_Click"
+                                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                                    Width="18" Height="18"
+                                    FontSize="8"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    Background="Black"
+                                    Content="x" />
+                        </Grid>
+                    </Grid>
+                    <ContentControl Grid.Row="1" Content="{TemplateBinding Window.Content}" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                                    Margin="5"/>
+                </Grid>
+            </Border>
+        </ControlTemplate>
+    </Window.Template>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image x:Name="imgAvatar"
+               Grid.Column="0" 
+               Margin="5"
+               Source="{Binding Path=User.ProfileImageUrl, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}" />
+        <TextBlock Grid.Column="1"
+                   Margin="5"
+                   Foreground="White"
+                   FontSize="12">
+            <TextBlock.Text>
+                <Binding RelativeSource="{RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}"
+                         Path="Message"/>
+            </TextBlock.Text>
+        </TextBlock>
+    </Grid>
+</Window>

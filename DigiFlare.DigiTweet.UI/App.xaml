@@ -1,0 +1,1121 @@
+﻿<Application x:Class="DigiFlare.DigiTweet.UI.App"
+             StartupUri="Window1.xaml" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Blacklight_Controls="clr-namespace:Blacklight.Controls;assembly=Blacklight.WPFControls" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+             xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
+    <Application.Resources>
+        <LinearGradientBrush x:Key="HeaderBackground" SpreadMethod="Pad" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF3B3B3B" Offset="0"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="HeaderBackgroundTop" Color="#FF9F9E9E"/>
+        <SolidColorBrush x:Key="GrayBorder" Color="#FF707070"/>
+    	<RadialGradientBrush x:Key="DigiTweetBackground">
+    		<RadialGradientBrush.RelativeTransform>
+    			<TransformGroup>
+    				<ScaleTransform CenterX="0.5" CenterY="0.5" 
+    					ScaleX="1.672" ScaleY="1.672" />
+    				<SkewTransform CenterX="0.5" CenterY="0.5"
+    					AngleX="0" AngleY="0" />
+    				<RotateTransform CenterX="0.5" CenterY="0.5" Angle="0" />
+    				<TranslateTransform X="0" Y="0" />
+    			</TransformGroup>
+    		</RadialGradientBrush.RelativeTransform>
+    		<GradientStop Color="#FF2F2F2F" Offset="0"/>
+    		<GradientStop Color="#FF000000" Offset="1"/>
+    	</RadialGradientBrush>
+
+        <!--  Styles -->
+        <SolidColorBrush x:Key="BorderBrush" Color="#FF000000"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="DisabledBrush" Color="#A5FFFFFF"/>
+        <LinearGradientBrush x:Key="FocusedStrokeBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#B2FFFFFF" Offset="0"/>
+            <GradientStop Color="#51FFFFFF" Offset="1"/>
+            <GradientStop Color="#66FFFFFF" Offset="0.325"/>
+            <GradientStop Color="#1EFFFFFF" Offset="0.325"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_GlossGradient" EndPoint="0.0149999996647239,0.0160000007599592" StartPoint="0.486000001430511,0.723999977111816">
+            <GradientStop Color="#0CFFFFFF"/>
+            <GradientStop Color="#4CFFFFFF" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_BackgroundGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF3B3B3B"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_StrokeGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#7FFFFFFF"/>
+            <GradientStop Color="#33FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
+        <RadialGradientBrush x:Key="GlossyBlack_HighlightGradient">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.177" ScaleY="1.451"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform Y="0.562"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#4CFFFFFF"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </RadialGradientBrush>
+        <RadialGradientBrush x:Key="GlossyBlack_MouseOverBackgroundGradient">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.177" ScaleY="1.451"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform Y="0.562"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#CCFFFFFF"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </RadialGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_PressedBackgroundGradient" EndPoint="0.5,0" StartPoint="0.5,1">
+            <GradientStop Color="#FF3B3B3B"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+        </LinearGradientBrush>
+        <RadialGradientBrush x:Key="GlossyBlack_PressedHighlightGradient">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.177" ScaleY="1.451"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform Y="0.562"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#19FFFFFF"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </RadialGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_DisabledBackgroundGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF3B3B3B"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_TextBoxBackgroundGradient" EndPoint="0.498,0.328" StartPoint="0.498,-0.672">
+            <GradientStop Color="#FF3B3B3B"/>
+            <GradientStop Color="#FF000000" Offset="1"/>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_TextBoxStroke" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#4CFFFFFF"/>
+            <GradientStop Color="#33FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
+        <RadialGradientBrush x:Key="GlossyBlack_TextBoxHighlightGradient">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.177" ScaleY="1.297"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform Y="0.639"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#4CFFFFFF"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </RadialGradientBrush>
+        <RadialGradientBrush x:Key="GlossyBlack_TextBoxMouseOverHighlight">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.177" ScaleY="1.297"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform Y="0.639"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#7FFFFFFF"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </RadialGradientBrush>
+        <SolidColorBrush x:Key="GlossyBlack_TextBoxDisabledBackground" Color="#FF000000"/>
+        <SolidColorBrush x:Key="GlossyBlack_GreyStateBackground" Color="#FF808080"/>
+        <SolidColorBrush x:Key="GlossyBlack_Selected" Color="#FFFFFFFF"/>
+        <RadialGradientBrush x:Key="GlossyBlack_DeterminateProgressBarHighlightGradient">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.177" ScaleY="1.591"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform Y="0.492"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#4CFFFFFF"/>
+            <GradientStop Color="#00000000" Offset="1"/>
+        </RadialGradientBrush>
+        <LinearGradientBrush x:Key="GlossyBlack_PopupBackgroundGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF212121" Offset="1"/>
+            <GradientStop Color="#FF000000" Offset="0.629"/>
+        </LinearGradientBrush>
+        <RadialGradientBrush x:Key="GlossyBlack_RectangleGlossGradient">
+            <RadialGradientBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="2.6630001068115234" ScaleY="2.3280000686645508"/>
+                    <SkewTransform CenterX="0.5" CenterY="0.5"/>
+                    <RotateTransform CenterX="0.5" CenterY="0.5"/>
+                    <TranslateTransform X="0.51399999856948853" Y="0.61900001764297485"/>
+                </TransformGroup>
+            </RadialGradientBrush.RelativeTransform>
+            <GradientStop Color="#19FFFFFF" Offset="1"/>
+            <GradientStop Color="#19FFFFFF" Offset="0.85699999332427979"/>
+            <GradientStop Color="#00FFFFFF" Offset="0.84799998998641968"/>
+        </RadialGradientBrush>
+        <SolidColorBrush x:Key="GlossyBlack_ListItemBackground" Color="#FF000000"/>
+        <LinearGradientBrush x:Key="GlossyBlack_ScrollBarBackgroundGradient" EndPoint="-2.6,0.5" StartPoint="3.6,0.5">
+            <GradientStop Color="#FF3B3B3B"/>
+            <GradientStop Color="#FF000000" Offset="0.554"/>
+        </LinearGradientBrush>
+		
+        <RadialGradientBrush x:Key="DigiTweetBackground2">
+        	<RadialGradientBrush.RelativeTransform>
+        		<TransformGroup>
+        			<ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.672" ScaleY="1.672"/>
+        			<SkewTransform AngleX="0" AngleY="0" CenterX="0.5" CenterY="0.5"/>
+        			<RotateTransform Angle="0" CenterX="0.5" CenterY="0.5"/>
+        			<TranslateTransform X="0" Y="0"/>
+        		</TransformGroup>
+        	</RadialGradientBrush.RelativeTransform>
+        	<GradientStop Color="#FF595959" Offset="0"/>
+        	<GradientStop Color="#FF000000" Offset="1"/>
+        </RadialGradientBrush>
+        
+		
+		<Style x:Key="Home" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="HomeOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="HomeOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+        					<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+							<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+        						<Path x:Name="Path_48" Width="65.9907" Height="56.3507" Canvas.Left="535.002" Canvas.Top="100.354" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 567.885,112.63C 567.885,112.63 544.849,133.588 544.849,133.86L 544.849,152.104C 544.849,154.641 547.464,156.705 550.675,156.705L 563.789,156.705L 563.789,139.676L 574.031,139.676L 574.031,156.705L 585.975,156.705C 589.187,156.705 591.8,154.641 591.8,152.104L 591.8,133.86C 591.8,133.581 567.885,112.63 567.885,112.63 Z M 599.899,128.252L 567.899,100.354L 535.831,128.818C 535.152,129.497 534.375,132.028 535.813,133.466C 537.459,135.112 539.597,134.761 541.049,133.482C 541.049,133.482 563.663,113.381 568.001,109.556C 572.324,113.362 594.687,132.92 594.687,132.92C 596.136,134.198 598.48,134.188 599.92,132.9C 601.357,131.61 601.349,129.529 599.899,128.252 Z "/>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource HomeOut}" x:Name="HomeOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource HomeOver}" x:Name="HomeOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>		
+		
+		<Style x:Key="Tweet" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="TweetOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="TweetOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+        						<Path x:Name="TweetPath" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 577.333,22.9935L 550.468,22.9935C 549.295,22.9935 548.345,22.2521 548.345,21.3388C 548.345,20.4255 549.295,19.6841 550.468,19.6841L 577.333,19.6841C 578.511,19.6841 579.46,20.4255 579.46,21.3388C 579.46,22.2521 578.511,22.9935 577.333,22.9935 Z M 577.333,31.0654L 550.468,31.0654C 549.295,31.0654 548.345,30.3254 548.345,29.4108C 548.345,28.4975 549.295,27.7575 550.468,27.7575L 577.333,27.7575C 578.511,27.7575 579.46,28.4975 579.46,29.4108C 579.46,30.3254 578.511,31.0654 577.333,31.0654 Z M 577.333,39.1375L 550.468,39.1375C 549.295,39.1375 548.345,38.3975 548.345,37.4828C 548.345,36.5695 549.295,35.8268 550.468,35.8268L 577.333,35.8268C 578.511,35.8268 579.46,36.5695 579.46,37.4828C 579.46,38.3975 578.511,39.1375 577.333,39.1375 Z M 579.061,8.3335L 549.639,8.3335C 543.292,8.3335 538.128,13.4988 538.128,19.8467L 538.128,39.6735C 538.128,43.7214 540.233,47.2815 543.403,49.3348C 543.06,55.4534 539.805,58.8881 539.633,59.0161C 544.033,56.9095 548.339,53.7521 550.688,51.1855L 579.061,51.1855C 585.409,51.1855 590.573,46.0215 590.573,39.6735L 590.573,19.8467C 590.573,13.4988 585.409,8.3335 579.061,8.3335 Z " Width="34.853" Height="33.683"/>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource TweetOut}" x:Name="TweetOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource TweetOver}" x:Name="TweetOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+
+
+		<Style x:Key="Tweets" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="TweetsOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="TweetsOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+        						<Path x:Name="TweetsPath" Width="60.8" Height="57.8267" Canvas.Left="538.128" Canvas.Top="-79.6663" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 595.773,-37.741C 595.773,-34.8743 593.84,-32.4743 591.216,-31.7103C 590.102,-31.6583 588.909,-31.645 588.196,-31.7609C 587.771,-31.8289 587.483,-31.6596 587.307,-31.4316L 565.28,-31.4316C 562.117,-31.4316 559.518,-33.7769 559.065,-36.8156L 579.061,-36.8156C 585.409,-36.8156 590.573,-41.9796 590.573,-48.3262L 590.573,-60.2369C 593.523,-59.7103 595.773,-57.1382 595.773,-54.0396M 550.468,-48.8623C 549.295,-48.8623 548.345,-49.6023 548.345,-50.5182C 548.345,-51.4302 549.295,-52.1729 550.468,-52.1729L 555.816,-52.1729L 555.816,-48.8623M 550.468,-60.2422L 558.151,-60.2422C 557.317,-59.2876 556.671,-58.1675 556.273,-56.9343L 550.468,-56.9343C 549.295,-56.9343 548.345,-57.6756 548.345,-58.5903C 548.345,-59.5023 549.295,-60.2422 550.468,-60.2422 Z M 550.468,-68.3169L 577.333,-68.3169C 578.511,-68.3169 579.46,-67.5743 579.46,-66.6609C 579.46,-65.7476 578.511,-65.0063 577.333,-65.0063L 550.468,-65.0063C 549.295,-65.0063 548.345,-65.7476 548.345,-66.6609C 548.345,-67.5743 549.295,-68.3169 550.468,-68.3169 Z M 577.333,-56.9343L 559.708,-56.9343C 560.607,-58.6556 562.258,-59.9102 564.237,-60.2422L 577.333,-60.2422C 578.511,-60.2422 579.46,-59.5023 579.46,-58.5903C 579.46,-57.6756 578.511,-56.9343 577.333,-56.9343 Z M 577.333,-52.1729C 578.511,-52.1729 579.46,-51.4302 579.46,-50.5182C 579.46,-49.6023 578.511,-48.8623 577.333,-48.8623L 558.971,-48.8623L 558.971,-52.1729M 598.928,-37.741L 598.928,-54.0396C 598.928,-58.8809 595.271,-62.8809 590.573,-63.4316L 590.573,-68.1543C 590.573,-74.5009 585.409,-79.6663 579.061,-79.6663L 549.639,-79.6663C 543.292,-79.6663 538.128,-74.5009 538.128,-68.1543L 538.128,-48.3262C 538.128,-44.2783 540.233,-40.7183 543.403,-38.665C 543.06,-32.5463 539.804,-29.1116 539.633,-28.9836C 544.033,-31.0903 548.339,-34.2476 550.688,-36.8156L 555.863,-36.8156C 556.331,-32.0303 560.373,-28.2769 565.28,-28.2769L 588.603,-28.2769C 590.535,-26.1663 594.073,-23.5716 597.691,-21.8396C 597.549,-21.9449 594.873,-24.769 594.592,-29.7983C 597.197,-31.4863 598.928,-34.4129 598.928,-37.741 Z "/>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource TweetsOut}" x:Name="TweetsOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource TweetsOver}" x:Name="TweetsOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+
+    	
+		<Style x:Key="Reply" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="ReplyOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="ReplyOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+        						<Path x:Name="ReplyPath" Width="72.304" Height="46.2733" Canvas.Left="255.746" Canvas.Top="191.739" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 290.323,201.257L 290.323,208.956L 293.328,208.675C 293.43,208.665 303.492,207.765 310.442,210.819C 314.792,212.729 318.23,218.993 319.183,224.611C 316.56,222.715 311.667,221.147 306.907,221.065L 290.279,221.064L 290.323,223.812L 290.323,228.495C 285.006,225.424 272.052,217.945 266.736,214.876C 272.052,211.807 285.006,204.327 290.323,201.257 Z M 255.746,214.876L 295.818,238.012L 295.818,226.56L 306.812,226.56C 319.183,224.611 328.05,236.74 328.05,236.74C 328.062,235.849 324.212,210.867 312.652,205.788C 306.883,203.253 299.772,202.98 295.818,203.06L 295.818,191.739L 255.746,214.876 Z "/>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource ReplyOut}" x:Name="ReplyOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource ReplyOver}" x:Name="ReplyOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+
+        <Style x:Key="DirectMessage" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="DirectMessageOver">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="DirectMessageOut">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                    <SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+                            <Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+                            <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+                                <Path x:Name="Path_9" Width="70.2213" Height="44.9187" Canvas.Left="528.89" Canvas.Top="468.874" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 569.257,491.471L 563.998,496.731L 558.731,491.471L 554.93,487.647L 540.697,473.398L 587.302,473.398L 573.069,487.647M 540.697,509.534L 554.93,495.277L 563.998,504.361L 573.069,495.277L 587.302,509.534M 533.665,473.991L 551.126,491.471L 533.665,508.941M 594.334,508.941L 576.883,491.471L 594.334,473.991M 528.89,468.874L 528.89,469.678L 528.89,513.255L 528.89,513.793L 599.111,513.793L 599.111,513.255L 599.111,469.678L 599.111,468.874L 528.89,468.874 Z "/>
+                            </Viewbox>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource DirectMessageOut}" x:Name="DirectMessageOut_BeginStoryboard"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource DirectMessageOver}" x:Name="DirectMessageOver_BeginStoryboard"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Favourite" BasedOn="{x:Null}" TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Path x:Name="Star"
+                              Width="14" Height="14" 
+                              VerticalAlignment="Top" HorizontalAlignment="Left"
+                              Fill="#FF66654F" Stretch="Fill" Stroke="{x:Null}" 
+                              Data="M114.5,59.25L134.375,99.875 180.25,106.75 147.25,139.125 155,184.625 114,163.625 73.125,184.875 80.875,139.375 47.5,107.25 93.625,100.125z" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="Star" Property="Fill" Value="#FFFFF60B" />
+                                <Setter TargetName="Star" Property="Stroke" Value="#FFF5CC0B"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Profile" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="ProfileOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="ProfileOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+								<Canvas Width="66" Height="66" >
+									<Path x:Name="Path_30" Width="20.388" Height="20.388" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 366.637,409.706C 372.268,409.706 376.831,405.142 376.831,399.512C 376.831,393.88 372.268,389.318 366.637,389.318C 361.005,389.318 356.443,393.88 356.443,399.512C 356.443,405.142 361.005,409.706 366.637,409.706 Z " Canvas.Left="4.043" Canvas.Top="17.856"/>
+									<Path x:Name="Path_31" Width="58.2293" Height="37.028" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 381.158,431.947C 380.611,428.452 379.612,425.257 378.247,422.569C 380.607,413.392 385.446,406.919 390.935,406.919C 398.16,406.919 404.267,418.116 405.07,431.947M 390.935,400.919C 383.742,400.919 377.568,407.265 374.135,416.963C 372.027,415.028 369.603,413.913 367.018,413.913C 358.943,413.913 352.4,424.675 352.4,437.947L 371.246,437.947L 381.636,437.947L 410.63,437.947L 410.63,434.947C 410.63,415.867 401.976,400.919 390.935,400.919 Z " Canvas.Top="29.457"/>
+									<Path x:Name="Path_32" Width="26.1707" Height="26.1693" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 391.549,376.319C 396.084,376.319 399.775,380.011 399.775,384.548C 399.775,389.084 396.084,392.775 391.549,392.775C 387.011,392.775 383.319,389.084 383.319,384.548C 383.319,380.011 387.011,376.319 391.549,376.319 Z M 391.549,397.631C 398.763,397.631 404.633,391.763 404.633,384.548C 404.633,377.334 398.763,371.462 391.549,371.462C 384.332,371.462 378.463,377.334 378.463,384.548C 378.463,391.763 384.332,397.631 391.549,397.631 Z " Canvas.Left="26.063"/>
+								</Canvas>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource ProfileOut}" x:Name="ProfileOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource ProfileOver}" x:Name="ProfileOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>			
+		
+		<Style x:Key="Logout" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="LogoutOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="LogoutOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+								<Canvas Width="66" Height="66">
+									<Path x:Name="Path_8" Width="51.408" Height="50.388" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 204.105,102.519L 204.105,110.217C 210.725,113.017 215.367,119.566 215.367,127.201C 215.367,137.382 207.117,145.634 196.938,145.634C 186.761,145.634 178.507,137.382 178.507,127.201C 178.507,119.566 183.151,113.017 189.769,110.217L 189.769,102.519C 179.062,105.621 171.233,115.493 171.233,127.203C 171.233,141.4 182.741,152.907 196.937,152.907C 211.134,152.907 222.641,141.4 222.641,127.203C 222.641,115.495 214.811,105.622 204.105,102.519 Z " Canvas.Top="8.286"/>
+									<Rectangle x:Name="Rectangle" Width="7.78267" Height="24.1654" Stretch="Fill" Fill="#FFFFFFFF" Canvas.Left="21.812"/>
+								</Canvas>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource LogoutOut}" x:Name="LogoutOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource LogoutOver}" x:Name="LogoutOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>						
+
+		<Style x:Key="Refersh" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="RefershOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="RefershOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+								<Path x:Name="Path" Width="57.2069" Height="57.2075" Canvas.Left="174.192" Canvas.Top="466.507" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 214.398,468.969L 214.293,468.895C 210.872,467.395 207.098,466.547 203.08,466.508C 202.449,466.502 201.829,466.526 201.21,466.565C 200.778,466.591 200.352,466.633 199.924,466.677C 199.857,466.683 199.788,466.686 199.721,466.694L 199.721,466.701C 194.714,467.247 190.082,469.071 186.193,471.873L 183.397,467.751C 183.232,467.508 182.941,467.391 182.656,467.453C 182.368,467.513 182.153,467.738 182.097,468.026L 180.364,477.605L 179.14,484.362C 179.098,484.579 179.16,484.798 179.306,484.965C 179.442,485.117 179.634,485.206 179.882,485.206L 187.478,484.801L 196.029,484.347C 196.317,484.33 196.564,484.149 196.665,483.878C 196.762,483.607 196.694,483.305 196.481,483.11L 192.952,479.782C 195.165,478.346 197.7,477.383 200.428,477.021L 200.432,477.101C 201.265,476.997 202.109,476.923 202.977,476.934C 213.11,477.033 221.244,485.331 221.145,495.465C 221.042,505.601 212.745,513.734 202.61,513.634C 192.476,513.533 184.342,505.235 184.442,495.101C 184.452,494.215 184.542,493.353 184.673,492.503L 174.898,488.813C 174.464,490.749 174.213,492.757 174.193,494.825C 174.034,510.623 186.713,523.555 202.509,523.713C 218.306,523.869 231.241,511.191 231.397,495.394C 231.514,483.629 224.506,473.461 214.398,468.969 Z "/>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource RefershOut}" x:Name="RefershOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource RefershOver}" x:Name="RefershOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>	
+		
+        <Style x:Key="Options" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="OptionsOver">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="OptionsOut">
+                                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+                                    <SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+                            <Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+                            <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+                                <Path x:Name="Path" Width="59" Height="58.8519" Canvas.Left="168" Canvas.Top="-84.9506" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 211.243,-50.7734C 210.789,-50.6161 210.151,-50.7588 209.815,-51.0921L 194.346,-66.5628C 194.014,-66.8962 193.871,-67.5334 194.025,-67.9788L 195.754,-72.9148C 195.905,-73.3615 195.83,-74.0574 195.575,-74.4575L 190.037,-83.2681C 189.789,-83.6735 189.194,-84.0401 188.721,-84.0961L 181.186,-84.9442C 180.717,-85.0027 180.326,-84.6548 180.326,-84.1815L 180.326,-79.2681C 180.326,-78.8015 180.717,-78.3721 181.186,-78.3162L 185.175,-77.8615C 185.646,-77.8108 186.239,-77.4388 186.489,-77.0388L 188.814,-73.3442C 189.067,-72.9442 189.143,-72.2468 188.978,-71.8055L 188.203,-69.5708C 188.047,-69.1241 187.647,-68.4868 187.311,-68.1535L 185.979,-66.8188C 185.642,-66.4841 185.006,-66.0788 184.561,-65.9228L 182.326,-65.1428C 181.879,-64.9895 181.187,-65.0668 180.787,-65.3188L 177.087,-67.6375C 176.687,-67.8948 176.315,-68.4868 176.261,-68.9521L 175.778,-73.2922C 175.723,-73.7615 175.685,-74.1535 175.685,-74.1868C 175.674,-74.2015 175.275,-74.2055 174.806,-74.2055L 170.095,-74.2055C 169.625,-74.2055 169.283,-73.8188 169.334,-73.3521L 170.21,-65.5801C 170.261,-65.1094 170.63,-64.5175 171.034,-64.2668L 179.851,-58.7268C 180.254,-58.4734 180.945,-58.3987 181.387,-58.5508L 186.323,-60.2734C 186.766,-60.4375 187.409,-60.2895 187.742,-59.9521L 203.21,-44.4908C 203.543,-44.1535 203.686,-43.5108 203.535,-43.0681L 201.807,-38.1362C 201.653,-37.6909 201.726,-36.9961 201.983,-36.5948L 207.521,-27.7868C 207.769,-27.3788 208.365,-27.0095 208.829,-26.9548L 216.377,-26.1042C 216.847,-26.0508 217.231,-26.3922 217.231,-26.8708L 217.231,-31.7748C 217.231,-32.2508 216.847,-32.6815 216.377,-32.7375L 212.383,-33.1855C 211.907,-33.2321 211.321,-33.6094 211.069,-34.0095L 208.743,-37.7041C 208.498,-38.1108 208.423,-38.8015 208.569,-39.2481L 210.011,-43.3668C 210.167,-43.8148 210.666,-44.3108 211.106,-44.4628L 215.233,-45.9055C 215.678,-46.0628 216.37,-45.9868 216.775,-45.7295L 220.466,-43.4068C 220.866,-43.1588 221.243,-42.5668 221.295,-42.1015L 221.778,-37.7575C 221.833,-37.2895 221.875,-36.9014 221.875,-36.8615C 221.883,-36.8521 222.281,-36.8428 222.751,-36.8428L 227.462,-36.8428C 227.935,-36.8428 228.277,-37.2281 228.227,-37.7001L 227.347,-45.4734C 227.297,-45.9428 226.929,-46.5361 226.525,-46.7868L 217.706,-52.3228C 217.309,-52.5735 216.614,-52.6548 216.166,-52.4975L 211.243,-50.7734 Z "/>
+                            </Viewbox>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OptionsOut}" x:Name="OptionsOut_BeginStoryboard"/>
+                                </Trigger.ExitActions>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource OptionsOver}" x:Name="OptionsOver_BeginStoryboard"/>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+		
+		<Style x:Key="Retweet" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="RetweetOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="RetweetOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+								<Path x:Name="Path_13" Width="65.1227" Height="47.572" Canvas.Left="540.704" Canvas.Top="285.001" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 570.28,294.786L 570.28,303.204L 553.709,303.246C 546.607,303.246 545.351,315.149 553.232,315.149L 570.325,315.149C 570.325,315.149 570.28,320.38 570.28,322.788C 575.745,319.632 589.063,311.942 594.529,308.786C 589.063,305.632 575.745,297.942 570.28,294.786 Z M 605.827,308.786L 564.631,332.573L 564.631,320.798L 553.328,320.798C 535.641,320.798 537.696,297.72 552.317,297.72L 564.631,297.036L 564.631,285.001L 605.827,308.786 Z "/>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource RetweetOut}" x:Name="RetweetOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource RetweetOver}" x:Name="RetweetOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>	
+		
+		<Style x:Key="Trash" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+		      <Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type Button}">
+        				<ControlTemplate.Resources>
+        					<Storyboard x:Key="TrashOver">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+        							<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="1" KeySpline="0,0,0.5,1"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        					<Storyboard x:Key="TrashOut">
+        						<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+        							<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+        							<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0"/>
+        						</DoubleAnimationUsingKeyFrames>
+        					</Storyboard>
+        				</ControlTemplate.Resources>
+        				<Grid>
+							<Rectangle Fill="#FFFFFFFF" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.01" x:Name="rectangle2"/>
+        					<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0" x:Name="rectangle"/>
+        					<Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="4,4,4,4">
+								<Canvas Width="40" Height="65">
+									<Path x:Name="Path_41" Width="39.8787" Height="46.116" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 397.043,610.997C 397.043,612.02 396.351,612.849 395.503,612.849C 394.651,612.849 393.963,612.02 393.963,610.997L 393.963,587.565C 393.963,586.537 394.651,585.708 395.503,585.708C 396.351,585.708 397.043,586.537 397.043,587.565M 389.528,610.997C 389.528,612.02 388.84,612.849 387.99,612.849C 387.139,612.849 386.452,612.02 386.452,610.997L 386.452,587.565C 386.452,586.537 387.139,585.708 387.99,585.708C 388.84,585.708 389.528,586.537 389.528,587.565M 382.018,610.997C 382.018,612.02 381.328,612.849 380.478,612.849C 379.628,612.849 378.936,612.02 378.936,610.997L 378.936,587.565C 378.936,586.537 379.628,585.708 380.478,585.708C 381.328,585.708 382.018,586.537 382.018,587.565M 368.375,575.643L 368.375,611.719C 368.375,617.255 373.18,621.759 379.088,621.759L 397.539,621.759C 403.451,621.759 408.254,617.255 408.254,611.719L 408.254,575.643L 368.375,575.643 Z " Canvas.Left="0.223" Canvas.Top="18.954"/>
+									<Path x:Name="Path_42" Width="38.3975" Height="16.8724" Stretch="Fill" Fill="#FFFFFFFF" Data="F1 M 406.549,559.717C 405.775,557.589 403.987,556.281 402.548,556.804L 369.696,568.76C 368.264,569.283 367.733,571.433 368.508,573.561L 406.549,559.717 Z "/>
+								</Canvas>
+        					</Viewbox>
+        					<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True" Content=""/>
+        				</Grid>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="IsFocused" Value="True"/>
+        					<Trigger Property="IsDefaulted" Value="True"/>
+        					<Trigger Property="IsMouseOver" Value="True">
+        						<Trigger.ExitActions>
+        							<BeginStoryboard Storyboard="{StaticResource TrashOut}" x:Name="TrashOut_BeginStoryboard"/>
+        						</Trigger.ExitActions>
+        						<Trigger.EnterActions>
+        							<BeginStoryboard Storyboard="{StaticResource TrashOver}" x:Name="TrashOver_BeginStoryboard"/>
+        						</Trigger.EnterActions>
+        					</Trigger>
+        					<Trigger Property="IsPressed" Value="True"/>
+        					<Trigger Property="IsEnabled" Value="False"/>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+        
+        <Style x:Key="GenericTextbox" BasedOn="{x:Null}" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="#FF242424" />
+            <Setter Property="BorderBrush" Value="#FFE0E0E0" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+		
+		<Style x:Key="GenericButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<ControlTemplate.Resources>
+							<Storyboard x:Key="ButtonOver">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.4"/>
+									<SplineDoubleKeyFrame KeySpline="0,0,0.5,1" KeyTime="00:00:00.5000000" Value="1"/>
+								</DoubleAnimationUsingKeyFrames>
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.01"/>
+									<SplineDoubleKeyFrame KeyTime="00:00:00.5000000" Value="0.05" KeySpline="0,0,0.5,1"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+							<Storyboard x:Key="ButtonOut">
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="1"/>
+									<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0.4"/>
+								</DoubleAnimationUsingKeyFrames>
+								<DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle1" Storyboard.TargetProperty="(UIElement.Opacity)">
+									<SplineDoubleKeyFrame KeyTime="00:00:00" Value="0.05"/>
+									<SplineDoubleKeyFrame KeySpline="0.5,0,1,1" KeyTime="00:00:00.8000000" Value="0.01"/>
+								</DoubleAnimationUsingKeyFrames>
+							</Storyboard>
+						</ControlTemplate.Resources>
+						<Grid>
+							<Rectangle Fill="#FF707070" Stroke="{x:Null}" RadiusX="5" RadiusY="5" Opacity="0.01" Margin="0,1,0,-1" x:Name="rectangle1"/>
+							<Rectangle Fill="{x:Null}" Stroke="#FFFFFFFF" RadiusX="5" RadiusY="5" Opacity="0.4" x:Name="rectangle"/>
+							<ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" RecognizesAccessKey="True"/>
+						</Grid>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsFocused" Value="True"/>
+							<Trigger Property="IsDefaulted" Value="True"/>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Trigger.ExitActions>
+									<BeginStoryboard Storyboard="{StaticResource ButtonOut}" x:Name="ButtonOut_BeginStoryboard"/>
+								</Trigger.ExitActions>
+								<Trigger.EnterActions>
+									<BeginStoryboard Storyboard="{StaticResource ButtonOver}" x:Name="ButtonOver_BeginStoryboard"/>
+								</Trigger.EnterActions>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True"/>
+							<Trigger Property="IsEnabled" Value="False"/>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+        
+        
+        <Style x:Key="ItemBorder" BasedOn="{x:Null}" TargetType="{x:Type Border}">
+            <Style.Setters>
+                <Setter Property="Border.BorderBrush" Value="#393939" />
+                <Setter Property="Border.BorderThickness" Value="1" />
+                <Setter Property="Border.Background" Value="Black" />
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="Border.IsMouseOver" Value="True">
+                    <Setter Property="Border.Background" Value="#1F1F1F" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+		
+        <SolidColorBrush x:Key="StandardBorderBrush" Color="#888" />
+        <SolidColorBrush x:Key="StandardBackgroundBrush" Color="#333" />
+        <SolidColorBrush x:Key="HoverBorderBrush" Color="#DDD" />
+        <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="Gray" />
+        <SolidColorBrush x:Key="SelectedForegroundBrush" Color="White" />
+        <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+        <SolidColorBrush x:Key="NormalBrush" Color="#333" />
+        <SolidColorBrush x:Key="NormalBorderBrush" Color="#333" />
+        <SolidColorBrush x:Key="HorizontalNormalBrush" Color="#333" />
+        <SolidColorBrush x:Key="HorizontalNormalBorderBrush" Color="#333" />
+        <LinearGradientBrush x:Key="ListBoxBackgroundBrush" 
+			StartPoint="0,0" EndPoint="1,0.001">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="White" Offset="0.0" />
+                    <GradientStop Color="White" Offset="0.6" />
+                    <GradientStop Color="#DDDDDD" Offset="1.2"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="StandardBrush" 
+			StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="#333" Offset="0.0"/>
+                    <GradientStop Color="#CCC" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+        <SolidColorBrush x:Key="GlyphBrush" Color="#444" />
+        <LinearGradientBrush x:Key="PressedBrush" 
+			StartPoint="0,0" EndPoint="0,1">
+            <GradientBrush.GradientStops>
+                <GradientStopCollection>
+                    <GradientStop Color="#BBB" Offset="0.0"/>
+                    <GradientStop Color="#EEE" Offset="0.1"/>
+                    <GradientStop Color="#EEE" Offset="0.9"/>
+                    <GradientStop Color="#FFF" Offset="1.0"/>
+                </GradientStopCollection>
+            </GradientBrush.GradientStops>
+        </LinearGradientBrush>
+
+        <!-- SrollViewer ScrollBar Repeat Buttons (at each end) -->
+        <Style x:Key="ScrollBarLineButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border 
+          Name="Border"
+          Margin="1" 
+          CornerRadius="2" 
+          Background="{StaticResource NormalBrush}"
+          BorderBrush="{StaticResource NormalBorderBrush}"
+          BorderThickness="1">
+                            <Path 
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Fill="{StaticResource GlyphBrush}"
+            Data="{Binding Path=Content,
+				RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="Background" 
+								Value="{StaticResource PressedBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" 
+								Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- SrollViewer ScrollBar Repeat Buttons (The part in the middle, 
+             not the thumb the long area between the buttons ) -->
+        <Style x:Key="ScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RepeatButton}">
+                        <Border Background="Transparent" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- ScrollViewer ScrollBar Thumb, that part that can be dragged
+            up/down or left/right Buttons -->
+        <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="IsTabStop" Value="false"/>
+            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border 
+          CornerRadius="2" 
+          Background="{TemplateBinding Background}"
+          BorderBrush="{TemplateBinding BorderBrush}"
+          BorderThickness="1" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="VerticalScrollBar" 
+			TargetType="{x:Type ScrollBar}">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="18"/>
+                    <RowDefinition Height="0.00001*"/>
+                    <RowDefinition MaxHeight="18"/>
+                </Grid.RowDefinitions>
+                <Border
+      Grid.RowSpan="3"
+      CornerRadius="2" 
+      Background="#F0F0F0" />
+                <RepeatButton 
+      Grid.Row="0"                           
+      Style="{StaticResource ScrollBarLineButton}"
+      Height="18"
+      Command="ScrollBar.LineUpCommand"
+      Content="M 0 4 L 8 4 L 4 0 Z" />
+                <Track 
+      Name="PART_Track"
+      Grid.Row="1"
+      IsDirectionReversed="true">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton 
+          Style="{StaticResource ScrollBarPageButton}"
+          Command="ScrollBar.PageUpCommand" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb 
+          Style="{StaticResource ScrollBarThumb}" 
+          Margin="1,0,1,0"  
+          Background="{StaticResource HorizontalNormalBrush}"
+          BorderBrush="{StaticResource HorizontalNormalBorderBrush}" />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton 
+          Style="{StaticResource ScrollBarPageButton}"
+          Command="ScrollBar.PageDownCommand" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+                <RepeatButton 
+      Grid.Row="3" 
+      Style="{StaticResource ScrollBarLineButton}"
+      Height="18"
+      Command="ScrollBar.LineDownCommand"
+      Content="M 0 0 L 4 4 L 8 0 Z"/>
+            </Grid>
+        </ControlTemplate>
+        <!-- HorizontalScrollBar Template using the previously created Templates -->
+        <ControlTemplate x:Key="HorizontalScrollBar" 
+			TargetType="{x:Type ScrollBar}">
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition MaxWidth="18"/>
+                    <ColumnDefinition Width="0.00001*"/>
+                    <ColumnDefinition MaxWidth="18"/>
+                </Grid.ColumnDefinitions>
+                <Border
+      Grid.ColumnSpan="3"
+      CornerRadius="2" 
+      Background="#F0F0F0" />
+                <RepeatButton 
+      Grid.Column="0"                           
+      Style="{StaticResource ScrollBarLineButton}"
+      Width="18"
+      Command="ScrollBar.LineLeftCommand"
+      Content="M 4 0 L 4 8 L 0 4 Z" />
+                <Track 
+      Name="PART_Track"
+      Grid.Column="1"
+      IsDirectionReversed="False">
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton 
+          Style="{StaticResource ScrollBarPageButton}"
+          Command="ScrollBar.PageLeftCommand" />
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb 
+          Style="{StaticResource ScrollBarThumb}" 
+          Margin="0,1,0,1"  
+          Background="{StaticResource NormalBrush}"
+          BorderBrush="{StaticResource NormalBorderBrush}" />
+                    </Track.Thumb>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton 
+          Style="{StaticResource ScrollBarPageButton}"
+          Command="ScrollBar.PageRightCommand" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+                <RepeatButton 
+      Grid.Column="3" 
+      Style="{StaticResource ScrollBarLineButton}"
+      Width="18"
+      Command="ScrollBar.LineRightCommand"
+      Content="M 0 0 L 4 4 L 0 8 Z"/>
+            </Grid>
+        </ControlTemplate>
+        <!-- Style for overall  ScrollBar -->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Style.Triggers>
+                <Trigger Property="Orientation" Value="Horizontal">
+                    <Setter Property="Width" Value="Auto"/>
+                    <Setter Property="Height" Value="18" />
+                    <Setter Property="Template" 
+						Value="{StaticResource HorizontalScrollBar}" />
+                </Trigger>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Width" Value="18"/>
+                    <Setter Property="Height" Value="Auto" />
+                    <Setter Property="Template" 
+						Value="{StaticResource VerticalScrollBar}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style for overall  ScrollViewer -->
+        <Style x:Key="FavsScrollViewer" TargetType="{x:Type ScrollViewer}">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <ScrollContentPresenter Grid.Column="1"/>
+
+                            <ScrollBar Name="PART_VerticalScrollBar"
+            Value="{TemplateBinding VerticalOffset}"
+            Maximum="{TemplateBinding ScrollableHeight}"
+            ViewportSize="{TemplateBinding ViewportHeight}"
+            Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"/>
+                            <ScrollBar Name="PART_HorizontalScrollBar"
+            Orientation="Horizontal"
+            Grid.Row="1"
+            Grid.Column="1"
+            Value="{TemplateBinding HorizontalOffset}"
+            Maximum="{TemplateBinding ScrollableWidth}"
+            ViewportSize="{TemplateBinding ViewportWidth}"
+            Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"/>
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
+        
+        <!-- style for categories tab control-->
+        <Style x:Key="GenericTab" TargetType="{x:Type TabControl}">
+            <Setter Property="TabStripPlacement" Value="Left" />
+            <Setter Property="Background" Value="Black" />
+        </Style>
+        
+        <Style x:Key="GenericTabItem" TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border x:Name="TabItemBorder" 
+                                Width="100" Height="30" 
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                Background="Black">
+                            <Grid HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <ContentPresenter ContentSource="Header" Margin="2" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="TabItem.IsSelected" Value="True">
+                                <Setter TargetName="TabItemBorder" Property="Background" Value="Gray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        
+        <!-- style for checkbox list in tab control-->
+        <Style x:Key="CheckBoxList" TargetType="{x:Type ListBox}">
+            <Style.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" Margin="2">
+                                        <CheckBox.IsChecked>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" 
+                                                     Path="IsSelected"
+                                                     Mode="TwoWay" />
+                                        </CheckBox.IsChecked>
+                                    </CheckBox>
+                                    <ContentPresenter Grid.Column="1" Margin="2,0,0,0" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <ItemsPresenter />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"
+                                   Background="Black" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

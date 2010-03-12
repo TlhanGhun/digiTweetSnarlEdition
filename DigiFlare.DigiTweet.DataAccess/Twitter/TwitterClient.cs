@@ -191,5 +191,15 @@ namespace DigiFlare.DigiTweet.DataAccess
         }
 
         #endregion
+
+        #region ITwitterClient Members
+
+
+        public Lists AllLists()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

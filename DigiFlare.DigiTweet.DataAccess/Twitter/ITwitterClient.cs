@@ -266,6 +266,22 @@ namespace DigiFlare.DigiTweet.DataAccess
         DirectMessage DestroyDirectMessage(string id);
         #endregion
 
+        #region List methods
+
+        /// <summary>
+        /// Get list of all lists of the user
+        /// </summary>        
+        /// <returns></returns>
+        [OperationContract(Name = "UpdateWithSource")]
+        [WebInvoke(UriTemplate = "/user/lists.json",
+            Method = "POST",
+            BodyStyle = WebMessageBodyStyle.Bare,
+            RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
+         Lists AllLists();
+
+        #endregion
+
         #region Friendship Methods
 
         [OperationContract]

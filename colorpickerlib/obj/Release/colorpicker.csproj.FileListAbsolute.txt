@@ -38,3 +38,8 @@ C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\
 C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\Themes\generic.baml
 C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.g.resources
 C:\Users\Sven\Documents\Development\digiTweet\Source\colorpickerlib\obj\Release\ColorPicker.dll
+C:\Users\Sven\Documents\Visual Studio 2008\Projects\digiTweet Snarl Edition\digiTweetSnarlEdition\colorpickerlib\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Sven\Documents\Visual Studio 2008\Projects\digiTweet Snarl Edition\digiTweetSnarlEdition\colorpickerlib\obj\Release\ColorPickerDialog.g.cs
+C:\Users\Sven\Documents\Visual Studio 2008\Projects\digiTweet Snarl Edition\digiTweetSnarlEdition\colorpickerlib\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Sven\Documents\Visual Studio 2008\Projects\digiTweet Snarl Edition\digiTweetSnarlEdition\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.cache
+C:\Users\Sven\Documents\Visual Studio 2008\Projects\digiTweet Snarl Edition\digiTweetSnarlEdition\colorpickerlib\obj\Release\ColorPicker_MarkupCompile.lref

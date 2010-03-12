@@ -37,6 +37,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -46,6 +47,7 @@
     <Reference Include="System.ServiceModel.Web">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -65,8 +67,10 @@
     <Compile Include="Twitter\DirectMessages.cs" />
     <Compile Include="TinyUrl\ITinyUrlClient.cs" />
     <Compile Include="Twitter\ITwitterSearchClient.cs" />
+    <Compile Include="Twitter\Lists.cs" />
     <Compile Include="Twitter\SearchResult.cs" />
     <Compile Include="Twitter\SearchResults.cs" />
+    <Compile Include="Twitter\SingleList.cs" />
     <Compile Include="Twitter\Tweet.cs" />
     <Compile Include="Twitter\ITwitterClient.cs" />
     <Compile Include="Program.cs" />

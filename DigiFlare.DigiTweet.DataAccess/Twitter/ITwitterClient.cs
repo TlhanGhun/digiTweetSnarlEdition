@@ -272,7 +272,7 @@ namespace DigiFlare.DigiTweet.DataAccess
         /// Get list of all lists of the user
         /// </summary>        
         /// <returns></returns>
-        [OperationContract(Name = "UpdateWithSource")]
+        [OperationContract(Name = "AllLists")]
         [WebInvoke(UriTemplate = "/user/lists.json",
             Method = "POST",
             BodyStyle = WebMessageBodyStyle.Bare,

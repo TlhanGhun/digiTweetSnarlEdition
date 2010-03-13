@@ -420,7 +420,35 @@
                                                           FavouriteClicked="cbFavourite_Click" />
                             </Grid>
                         </blacklight:DragDockPanel>
-                        
+
+                        <!-- lists panel-->
+                        <blacklight:DragDockPanel x:Name="ddpAllListTweets"
+    				            Header="List tweets"
+    				            PanelIndex="0"
+    				            PanelState="Restored"
+    				            Margin="10" Style="{DynamicResource TweetDragDockPanelStyle}">
+                            <Grid>
+                                <TextBlock x:Name="txtListTweetsLoading"
+                                           Grid.Row="0" 
+                                           Foreground="White"
+                                           Text="Loading list Tweets"
+                                           FontSize="16" 
+                                           HorizontalAlignment="Center"
+                                           Margin="10" />
+                                <local:TweetsPanelControl x:Name="icAllListTweets" 
+                                                          IsShowMoreButton="Collapsed"
+                                                          AvatarClicked="imgAvatar_MouseDown"
+                                                          TweetTextLoaded="TextBlock_Loaded"
+                                                          ReplyClicked ="btnReply_Click"
+                                                          DirectMessageClicked ="btnDirectMessage_Click"
+                                                          RetweetClicked ="btnRetweet_Click"
+                                                          DeleteClicked ="btnDelete_Click"
+                                                          MoreClicked ="btnMoreTweets_Click"
+                                                          FavouriteClicked="cbFavourite_Click" />
+                            </Grid>
+                        </blacklight:DragDockPanel>
+
+
                         <!-- categories panel -->
                         <blacklight:DragDockPanel x:Name="ddpCategories"
     				            Header="Categories"

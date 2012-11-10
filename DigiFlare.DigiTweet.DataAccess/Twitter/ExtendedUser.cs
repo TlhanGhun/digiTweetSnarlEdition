@@ -46,10 +46,10 @@ namespace DigiFlare.DigiTweet.DataAccess
         public bool? ProfileBackgroundTile { get; set; }
 
         [DataMember(Name = "following")]
-        public bool? Following { get; set; }
+        public string Following { get; set; }
 
         [DataMember(Name = "notifications")]
-        public bool? Notifications { get; set; }
+        public string Notifications { get; set; }
 
         [DataMember(Name = "statuses_count")]
         public int StatusesCount { get; set; }
